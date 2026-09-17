@@ -1,0 +1,169 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.backgroundLayer {
+  position: absolute;
+  inset: -10%; /* give room for camera pan */
+  z-index: var(--z-bg);
+  transition: opacity 1.5s ease-in-out;
+}
+
+.fadeIn {
+  opacity: 1;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  /* Using a subtle gradient since actual photos will be provided by user later */
+  background: radial-gradient(circle at center, rgba(74, 122, 181, 0.05) 0%, transparent 70%);
+  background-size: cover;
+  background-position: center;
+  transition: filter 2s ease-in-out;
+}
+
+.blurred {
+  filter: blur(3px) brightness(0.6);
+}
+
+/* Camera Motions */
+.scale-up {
+  transform: scale(1);
+  animation: scaleUp 15s linear forwards;
+}
+
+.scale-down {
+  transform: scale(1.1);
+  animation: scaleDown 15s linear forwards;
+}
+
+.pan-left {
+  transform: translateX(0);
+  animation: panLeft 15s linear forwards;
+}
+
+.pan-right {
+  transform: translateX(-5%);
+  animation: panRight 15s linear forwards;
+}
+
+.pan-up {
+  transform: translateY(0);
+  animation: panUp 15s linear forwards;
+}
+
+/* Content Layouts */
+.contentWrapper {
+  position: relative;
+  z-index: var(--z-content);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 4rem;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.center-large {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.left-text-right {
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
+}
+
+.right-text-left {
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+}
+
+.layered {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.full-dark {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.typography-driven {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.slow-emerge {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.textContainer {
+  max-width: 600px;
+}
+
+.label {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  opacity: 0.7;
+}
+
+.mainText {
+  font-family: var(--font-cinematic);
+  font-size: 2.5rem;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.secondaryText {
+  font-family: var(--font-cinematic);
+  font-size: 1.4rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Animations */
+@keyframes scaleUp { to { transform: scale(1.05); } }
+@keyframes scaleDown { to { transform: scale(1); } }
+@keyframes panLeft { to { transform: translateX(-3%); } }
+@keyframes panRight { to { transform: translateX(0%); } }
+@keyframes panUp { to { transform: translateY(-3%); } }
+
+@media (max-width: 600px) {
+  .contentWrapper {
+    padding: 2rem;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .mainText {
+    font-size: 1.8rem;
+  }
+  .secondaryText {
+    font-size: 1.2rem;
+  }
+}

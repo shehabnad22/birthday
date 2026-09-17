@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --color-bg: #03050a; /* near-black midnight blue */
+  --color-text-primary: #f0f4f8; /* silver/white */
+  --color-text-secondary: #8b9bb4;
+  --color-accent: #4a7ab5; /* subtle blue glow */
+  
+  --font-cinematic: 'Cormorant Garamond', serif;
+  --font-ui: 'Inter', sans-serif;
+  
+  --z-bg: 0;
+  --z-particles: 10;
+  --z-content: 20;
+  --z-controls: 30;
+  --z-transition: 100;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden; /* no scroll on the cinematic experience */
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Minimalist fade-in helper */
+.fade-in {
+  animation: fadeIn 2s ease-in-out forwards;
+}
+.fade-out {
+  animation: fadeOut 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--color-bg);
+  padding: 2rem;
+}
+
+.messageContainer {
+  max-width: 600px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: opacity 3s ease;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+.fadeOutText {
+  opacity: 0;
+  transition: opacity 2s ease;
+  position: absolute;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: absolute;
+}
+
+.text {
+  font-family: var(--font-cinematic);
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.textSubtle {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  opacity: 0.7;
+}
+
+.textClimax {
+  font-family: var(--font-cinematic);
+  font-size: 3rem;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  font-weight: 300;
+}
+
+@media (max-width: 600px) {
+  .text {
+    font-size: 1.5rem;
+  }
+  .textClimax {
+    font-size: 2.2rem;
+  }
+  .textBlock {
+    width: 100%;
+  }
+}

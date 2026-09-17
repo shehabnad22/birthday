@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.medicalBackground {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-bg);
+  background: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
+  transition: opacity 3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ecgLine {
+  width: 100%;
+  height: 200px;
+  opacity: 0.15;
+  filter: blur(1px);
+}
+
+.ecgPath {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: drawEcg 8s linear infinite;
+}
+
+@keyframes drawEcg {
+  0% { stroke-dashoffset: 2000; }
+  30% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 0; } /* Hold for a bit before looping */
+}
+
+.textContainer {
+  position: relative;
+  z-index: var(--z-content);
+  text-align: center;
+  transition: opacity 3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+.fadeOutText {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.subtext {
+  font-family: var(--font-cinematic);
+  font-size: 1.5rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  font-weight: 300;
+  position: absolute;
+}
+
+.delayedSubtext {
+  transform: translateY(30px);
+}
+
+.climaxTitle {
+  font-family: var(--font-cinematic);
+  font-size: 5rem;
+  letter-spacing: 0.2em;
+  color: var(--color-text-primary);
+  font-weight: 300;
+  position: absolute;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: scaleSlow 10s linear forwards;
+}
+
+@keyframes scaleSlow {
+  from { transform: scale(0.95); }
+  to { transform: scale(1.05); }
+}
+
+@media (max-width: 600px) {
+  .climaxTitle {
+    font-size: 3rem;
+  }
+  .subtext {
+    font-size: 1.2rem;
+  }
+}

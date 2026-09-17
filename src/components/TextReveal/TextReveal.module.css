@@ -1,0 +1,47 @@
+.wrapper {
+  overflow: hidden; /* For clip-path style reveals */
+  display: inline-block;
+}
+
+.text {
+  opacity: 0;
+  will-change: transform, opacity, filter;
+}
+
+/* 1. Line reveal (moves up from below, clipped by wrapper) */
+.line {
+  transform: translateY(100%);
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1); /* Elegant decelerating curve */
+}
+
+.line.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* 2. Fade up (smooth unclipped fade and move) */
+.fade-up {
+  transform: translateY(15px);
+  transition-property: transform, opacity;
+  transition-timing-function: ease-out;
+}
+
+.fade-up.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* 3. Blur in */
+.blur-in {
+  filter: blur(10px);
+  transform: scale(1.05);
+  transition-property: filter, opacity, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blur-in.active {
+  filter: blur(0);
+  transform: scale(1);
+  opacity: 1;
+}

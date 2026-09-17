@@ -1,0 +1,140 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  background-color: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 15; /* Above background/particles, below text */
+  pointer-events: none;
+}
+
+.lightPoint {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 20px 2px var(--color-accent);
+  transition: opacity 3s ease, transform 5s ease, width 3s ease, height 3s ease;
+  z-index: var(--z-particles);
+}
+
+.lightPoint.active {
+  opacity: 0.8;
+  transform: scale(2);
+}
+
+.lightPoint.expand {
+  width: 150vw;
+  height: 150vw;
+  opacity: 0.05;
+  background: radial-gradient(circle at center, var(--color-accent) 0%, transparent 60%);
+}
+
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(74, 122, 181, 0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 4s ease;
+  z-index: var(--z-bg);
+}
+
+.atmosphere.active {
+  opacity: 1;
+}
+
+.textContainer {
+  position: relative;
+  z-index: var(--z-content);
+  opacity: 0;
+  transition: opacity 3s ease;
+}
+
+.textContainer.active {
+  opacity: 1;
+}
+
+.textContainer.fadeOut {
+  opacity: 0;
+}
+
+.greeting {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  letter-spacing: 0.4em;
+  color: var(--color-text-secondary);
+  font-weight: 300;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 3s ease, transform 3s ease;
+}
+
+.greeting.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.name {
+  font-family: var(--font-cinematic);
+  font-size: 4rem;
+  letter-spacing: 0.3em;
+  font-weight: 300;
+  margin-left: 0.3em;
+  color: var(--color-text-primary);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 3s ease, transform 3s ease;
+}
+
+.name.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.age {
+  font-family: var(--font-cinematic);
+  font-size: 3rem;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: 300;
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 3s ease, transform 3s ease;
+}
+
+.age.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .name {
+    font-size: 2.5rem;
+  }
+  .greeting {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+  }
+  .age {
+    font-size: 2rem;
+  }
+}
